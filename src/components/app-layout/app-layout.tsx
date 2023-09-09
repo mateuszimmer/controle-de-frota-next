@@ -1,9 +1,10 @@
 'use client'
 
-import { Fragment } from 'react'
+import { Fragment, useState } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import Link from 'next/link'
+import { Nabla } from 'next/font/google'
 
 const user = {
   name: 'Tom Cook',
@@ -11,13 +12,9 @@ const user = {
   imageUrl:
     'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
 }
-const navigation = [
-  { name: 'Dashboard', href: '#', current: true },
-  { name: 'Veículos', href: '#', current: false },
-  { name: 'Manutenções', href: '#', current: false },
-  { name: 'Combustíveis', href: '#', current: false },
-  { name: 'Gerenciador', href: '#', current: false },
-]
+
+
+
 const userNavigation = [
   { name: 'Your Profile', href: '#' },
   { name: 'Settings', href: '#' },
@@ -28,7 +25,31 @@ function classNames(...classes: any) {
   return classes.filter(Boolean).join(' ')
 }
 
+interface navItemProps {
+  name: string,
+  href: string,
+  current: boolean 
+}
+
 export default function AppLayout({children}: {children: React.ReactNode}) {
+
+  const [navigation, setNavigation] = useState([
+    { name: 'Dashboard', href: '/logged-area/dashboard', current: true },
+    { name: 'Veículos', href: '/logged-area/veiculos', current: false },
+    { name: 'Manutenções', href: '/logged-area/manutencoes', current: false },
+    { name: 'Combustíveis', href: '/logged-area/combustiveis', current: false },
+    { name: 'Gerenciador', href: '/logged-area/gerenciador', current: false },
+  ])
+
+  function setNav(current: string): void {
+    const nav: navItemProps[] = navigation.map((element) => {
+      element.name === current ? element.current = true : element.current = false
+      return element
+    })
+
+    setNavigation(nav)
+  }
+
   return (
     <>
       <div className="min-h-full">
@@ -58,6 +79,7 @@ export default function AppLayout({children}: {children: React.ReactNode}) {
                               'rounded-md px-3 py-2 text-sm font-medium'
                             )}
                             aria-current={item.current ? 'page' : undefined}
+                            onClick={() => setNav(item.name)}
                           >
                             {item.name}
                           </Link>

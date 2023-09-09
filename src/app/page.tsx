@@ -1,5 +1,4 @@
 import { Metadata } from 'next'
-import AppLayout from '@/components/app-layout/app-layout'
 
 export const metadata: Metadata = {
   title: 'Gestão de Frota - Home',
