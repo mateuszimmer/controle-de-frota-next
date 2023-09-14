@@ -1,6 +1,6 @@
 import { Metadata } from 'next'
-import AppLayoutHeader from '@/components/app-layout-header/app-layout-header'
-import AppLayoutMain from '@/components/app-layout-main/app-layout-main'
+import AppLayoutHeader from '@/app/components/app-layout/app-layout-header'
+import AppLayoutMain from '@/app/components/app-layout/app-layout-main'
 
 export const metadata: Metadata = {
   title: 'Gestão de Frota - Home',

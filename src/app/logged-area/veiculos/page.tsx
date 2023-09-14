@@ -1,6 +1,8 @@
 import { Metadata } from 'next'
-import AppLayoutHeader from '@/components/app-layout-header/app-layout-header'
-import AppLayoutMain from '@/components/app-layout-main/app-layout-main'
+import AppLayoutMain from '@/app/components/app-layout/app-layout-main'
+import VehiclesTab from './components/table'
+import { veiculos } from '@/utils/data/veículos'
+import VehiclesLayoutHeader from './components/vehicles-header'
 
 export const metadata: Metadata = {
   title: 'Gestão de Frota - Home',
@@ -10,9 +12,10 @@ export const metadata: Metadata = {
 export default function Dashboard() {
   return (
     <>
-        <AppLayoutHeader titulo="Manutenções" />
+        <VehiclesLayoutHeader titulo="Veículos" />
         <AppLayoutMain>
-            Olá, Mundo. Esse é um novo formato para o App Layout.
+          {/* <h2>Esses são os veículos cadastrados:</h2> */}
+          <VehiclesTab VeiculosProps={veiculos} />
         </AppLayoutMain>
     </>
   )

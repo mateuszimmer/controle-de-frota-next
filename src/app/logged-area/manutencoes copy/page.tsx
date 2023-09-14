@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 export default function Dashboard() {
   return (
     <>
-        <AppLayoutHeader titulo="Combustíveis" />
+        <AppLayoutHeader titulo="Veículos" />
         <AppLayoutMain>
             Olá, Mundo. Esse é um novo formato para o App Layout.
         </AppLayoutMain>

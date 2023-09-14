@@ -4,7 +4,12 @@ import { Fragment, useState } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import Link from 'next/link'
-import { Nabla } from 'next/font/google'
+
+interface navItemProps {
+  name: string,
+  href: string,
+  current: boolean 
+}
 
 const user = {
   name: 'Tom Cook',
@@ -12,8 +17,6 @@ const user = {
   imageUrl:
     'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
 }
-
-
 
 const userNavigation = [
   { name: 'Your Profile', href: '#' },
@@ -25,16 +28,10 @@ function classNames(...classes: any) {
   return classes.filter(Boolean).join(' ')
 }
 
-interface navItemProps {
-  name: string,
-  href: string,
-  current: boolean 
-}
-
 export default function AppLayout({children}: {children: React.ReactNode}) {
 
   const [navigation, setNavigation] = useState([
-    { name: 'Dashboard', href: '/logged-area/dashboard', current: true },
+    { name: 'Dashboard', href: '/logged-area/dashboard', current: false },
     { name: 'Veículos', href: '/logged-area/veiculos', current: false },
     { name: 'Manutenções', href: '/logged-area/manutencoes', current: false },
     { name: 'Combustíveis', href: '/logged-area/combustiveis', current: false },
@@ -61,9 +58,9 @@ export default function AppLayout({children}: {children: React.ReactNode}) {
                   <div className="flex items-center">
                     <div className="flex-shrink-0">
                       <img
-                        className="h-8 w-8"
-                        src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
-                        alt="Your Company"
+                        className="h-10 w-10"
+                        src="/images/logo.png"
+                        alt="Logo"
                       />
                     </div>
                     <div className="hidden md:block">

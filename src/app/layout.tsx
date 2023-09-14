@@ -5,8 +5,8 @@ import { Inter } from 'next/font/google'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Gestão de Frota - Next',
   description: 'Sistema de Gestão de Frota',
+  icons: '/images/logo.png'
 }
 
 export default function RootLayout({
