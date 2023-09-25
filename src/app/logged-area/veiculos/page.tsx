@@ -1,3 +1,5 @@
+'use client'
+
 import { Metadata } from 'next'
 import AppLayoutMain from '@/app/components/app-layout/app-layout-main'
 import VehiclesTab from './components/table'
@@ -12,11 +14,10 @@ export const metadata: Metadata = {
 export default function Dashboard() {
   return (
     <>
-        <VehiclesLayoutHeader titulo="Veículos" />
-        <AppLayoutMain>
-          {/* <h2>Esses são os veículos cadastrados:</h2> */}
-          <VehiclesTab VeiculosProps={veiculos} />
-        </AppLayoutMain>
+      <VehiclesLayoutHeader titulo="Veículos"/>
+      <AppLayoutMain>
+        <VehiclesTab VeiculosProps={veiculos} />
+      </AppLayoutMain>
     </>
   )
 }
