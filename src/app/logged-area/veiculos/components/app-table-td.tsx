@@ -7,6 +7,6 @@ interface TdProps extends ComponentProps<'td'> {
 
 export default function AppTd ( { children, className, ...props }: TdProps ) {
   return (
-    <td className={twMerge('py-3 border-b', className)} {...props}>{children}</td>
+    <td className={twMerge('py-3 border-b overflow-auto', className)} {...props}>{children}</td>
   )
 }
