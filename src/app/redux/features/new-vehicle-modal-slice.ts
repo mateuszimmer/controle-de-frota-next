@@ -14,11 +14,10 @@ export const newVehicleModalStateSlice = createSlice({
   reducers: {
     toggle: (state) => {
       state.value = !state.value
-      console.log(state.value)
     }
   }
 })
 
 export const vehicleModalStateReducers = newVehicleModalStateSlice.actions;
 
-export default newVehicleModalStateSlice.reducer
+export default newVehicleModalStateSlice.reducer;

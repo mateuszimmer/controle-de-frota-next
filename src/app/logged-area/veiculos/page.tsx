@@ -4,6 +4,7 @@ import VehiclesTab from './components/table'
 import { veiculos } from '@/utils/data/veículos'
 import VehiclesLayoutHeader from './components/vehicles-header'
 import NewVehivleModal from './components/new-vehicle-modal'
+import EditVehicleModal from './components/edit-vehicle-modal/edit-vehicle-modal'
 
 export const metadata: Metadata = {
   title: 'Gestão de Frota - Home',
@@ -17,6 +18,7 @@ export default function Dashboard() {
       <AppLayoutMain>
         <VehiclesTab VeiculosProps={veiculos} />
         <NewVehivleModal />
+        <EditVehicleModal />
       </AppLayoutMain>
     </>
   )

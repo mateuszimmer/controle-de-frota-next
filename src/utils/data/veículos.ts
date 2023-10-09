@@ -12,6 +12,9 @@ export interface VeiculosProps {
   kmLitro: number,
   cambio: string,
   direcao: string,
+  renavan: number,
+  numeroMotor: string,
+  chassi: string,
 }
 
 export const veiculos: VeiculosProps[] = [
@@ -28,7 +31,10 @@ export const veiculos: VeiculosProps[] = [
     capacidadeTanque: 50,
     kmLitro: 12,
     cambio: "Automático",
-    direcao: "Elétrica"
+    direcao: "Elétrica",
+    renavan: 123456789,
+    numeroMotor: "aaa11111",
+    chassi: "numchassi1",
   },
   {
     id: "2",
@@ -43,7 +49,10 @@ export const veiculos: VeiculosProps[] = [
     capacidadeTanque: 45,
     kmLitro: 10,
     cambio: "CVT",
-    direcao: "Hidráulica"
+    direcao: "Hidráulica",
+    renavan: 234567890,
+    numeroMotor: "bbb22222",
+    chassi: "numchassi2",
   },
   {
     id: "3",
@@ -58,7 +67,10 @@ export const veiculos: VeiculosProps[] = [
     capacidadeTanque: 55,
     kmLitro: 14,
     cambio: "Automático",
-    direcao: "Elétrica"
+    direcao: "Elétrica",
+    renavan: 345678901,
+    numeroMotor: "ccc33333",
+    chassi: "numchassi3",
   },
   {
     id: "4",
@@ -73,7 +85,10 @@ export const veiculos: VeiculosProps[] = [
     capacidadeTanque: 48,
     kmLitro: 11,
     cambio: "Automático",
-    direcao: "Hidráulica"
+    direcao: "Hidráulica",
+    renavan: 456789012,
+    numeroMotor: "ddd44444",
+    chassi: "numchassi4",
   },
   {
     id: "5",
@@ -88,7 +103,10 @@ export const veiculos: VeiculosProps[] = [
     capacidadeTanque: 52,
     kmLitro: 13,
     cambio: "Automático",
-    direcao: "Elétrica"
+    direcao: "Elétrica",
+    renavan: 567890123,
+    numeroMotor: "eee55555",
+    chassi: "numchassi5",
   },
   {
     id: "6",
@@ -103,7 +121,10 @@ export const veiculos: VeiculosProps[] = [
     capacidadeTanque: 50,
     kmLitro: 15,
     cambio: "Automático",
-    direcao: "Elétrica"
+    direcao: "Elétrica",
+    renavan: 678901234,
+    numeroMotor: "fff66666",
+    chassi: "numchassi6",
   },
   {
     id: "7",
@@ -118,7 +139,10 @@ export const veiculos: VeiculosProps[] = [
     capacidadeTanque: 53,
     kmLitro: 11,
     cambio: "Automático",
-    direcao: "Elétrica"
+    direcao: "Elétrica",
+    renavan: 789012345,
+    numeroMotor: "ggg77777",
+    chassi: "numchassi7",
   },
   {
     id: "8",
@@ -133,7 +157,10 @@ export const veiculos: VeiculosProps[] = [
     capacidadeTanque: 47,
     kmLitro: 12,
     cambio: "Automático",
-    direcao: "Hidráulica"
+    direcao: "Hidráulica",
+    renavan: 8901234567,
+    numeroMotor: "hhh88888",
+    chassi: "numchassi8",
   },
   {
     id: "9",
@@ -148,7 +175,10 @@ export const veiculos: VeiculosProps[] = [
     capacidadeTanque: 52,
     kmLitro: 10,
     cambio: "CVT",
-    direcao: "Elétrica"
+    direcao: "Elétrica",
+    renavan: 9012345678,
+    numeroMotor: "iii99999",
+    chassi: "numchassi9",
   },
   {
     id: "10",
@@ -163,6 +193,9 @@ export const veiculos: VeiculosProps[] = [
     capacidadeTanque: 55,
     kmLitro: 11,
     cambio: "Automático",
-    direcao: "Hidráulica"
-  }  
+    direcao: "Hidráulica", 
+    renavan: 999999999,
+    numeroMotor: "jjj00000",
+    chassi: "numchassi0",
+  },  
 ]

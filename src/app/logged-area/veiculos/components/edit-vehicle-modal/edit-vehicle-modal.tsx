@@ -1,18 +1,17 @@
 "use client"
 
-import React, { Fragment, useRef, useState } from "react";
-import { Dialog, Transition } from '@headlessui/react'
-import { ExclamationTriangleIcon } from '@heroicons/react/24/outline'
-import { useAppSelector, useAppDispatch } from "@/app/redux/hooks";
-import { vehicleModalStateReducers } from "@/app/redux/features/new-vehicle-modal-slice";
-import AppButton from "@/app/components/button/app-button";
+import AppButton from "@/app/components/button/app-button"
+import { editVehicleModalStateReducers } from "@/app/redux/features/edit-vehicle-modal-slice"
+import { useAppDispatch, useAppSelector } from "@/app/redux/hooks"
+import { Dialog, Transition } from "@headlessui/react"
+import { Fragment } from "react"
 
-export default function NewVehivleModal(): JSX.Element {
-  const modalState = useAppSelector(state => state.newVehicleModalSlice.value)
+export default function EditVehicleModal(): JSX.Element {
+  const modalState = useAppSelector(state => state.editVehicleModalSlice)
   const dispatch = useAppDispatch()
   return (
-    <Transition.Root show={modalState} as={Fragment}>
-      <Dialog as="div" className="relative z-10" onClose={() => dispatch(vehicleModalStateReducers.toggle())}>
+    <Transition.Root show={modalState.value} as={Fragment}>
+      <Dialog as="div" className="relative z-10" onClose={() => dispatch(editVehicleModalStateReducers.toggle(""))}>
         <Transition.Child
           as={Fragment}
           enter="ease-out duration-300"
@@ -41,64 +40,66 @@ export default function NewVehivleModal(): JSX.Element {
                   <div className="sm:flex sm:items-start w-full">
                     <div className="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left w-full">
                       <Dialog.Title as="h3" className="w-full text-base font-semibold leading-6 text-gray-900">
-                        Cadastrar Novo Veículo
+                        {modalState.informacoes.marca} {modalState.informacoes.modelo} - {modalState.informacoes.placa}
                       </Dialog.Title>
                         <form className="flex gap-5 flex-wrap mt-2 w-full">
+
+                        <input id="inputID" type="hidden" readOnly value={modalState.informacoes.id} />
 
                           <div className="grow min-w-[105px] max-w-[170px]">
                             <label className="text-sm text-gray-500 w-full pl-1" htmlFor="inputPlaca">
                               Placa
                             </label>
-                            <input id="inputPlaca" type="text" placeholder="AAA1111 ou AAA1A11" className="block rounded-md border-0 py-1.5 pl-4 pr-4 text-gray-900 ring-1 ring-inset ring-gray-500 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 w-full"/>
+                            <input id="inputPlaca" type="text" readOnly value={modalState.informacoes.placa} className="block rounded-md border-0 py-1.5 pl-4 pr-4 text-gray-900 ring-1 ring-inset ring-gray-500 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 w-full"/>
                           </div>
                           
                           <div className="grow min-w-[150px] max-w-[200px]">
                             <label className="text-sm text-gray-500 w-full pl-1" htmlFor="inputRenavan">
                               Renavan
                             </label>
-                            <input id="inputRenavan" type="text" placeholder="Renavan" className="block rounded-md border-0 py-1.5 pl-4 pr-4 text-gray-900 ring-1 ring-inset ring-gray-500 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 w-full"/>
+                            <input id="inputRenavan" type="text" readOnly value={modalState.informacoes.renavan} className="block rounded-md border-0 py-1.5 pl-4 pr-4 text-gray-900 ring-1 ring-inset ring-gray-500 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 w-full"/>
                           </div> 
                           
                           <div className="grow min-w-[200px] max-w-[300px]">
                             <label className="text-sm text-gray-500 w-full pl-1" htmlFor="inputNumeroMotor">
                               Numeração Motor
                             </label>
-                            <input id="inputNumeroMotor" type="text" placeholder="Numeração Motor" className="block rounded-md border-0 py-1.5 pl-4 pr-4 text-gray-900 ring-1 ring-inset ring-gray-500 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 w-full"/>
+                            <input id="inputNumeroMotor" type="text" readOnly value={modalState.informacoes.numeroMotor} className="block rounded-md border-0 py-1.5 pl-4 pr-4 text-gray-900 ring-1 ring-inset ring-gray-500 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 w-full"/>
                           </div> 
                           
                           <div className="grow min-w-[200px] max-w-[300px]">
                             <label className="text-sm text-gray-500 w-full pl-1" htmlFor="inputNumeroChassi">
                               Chassi
                             </label>
-                            <input id="inputNumeroChassi" type="text" placeholder="Chassi" className="block rounded-md border-0 py-1.5 pl-4 pr-4 text-gray-900 ring-1 ring-inset ring-gray-500 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 w-full"/>
+                            <input id="inputNumeroChassi" type="text" readOnly value={modalState.informacoes.chassi} className="block rounded-md border-0 py-1.5 pl-4 pr-4 text-gray-900 ring-1 ring-inset ring-gray-500 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 w-full"/>
                           </div>
                           
                           <div className="grow min-w-[200px] max-w-[300px]">
                             <label className="text-sm text-gray-500 w-full pl-1" htmlFor="inputMarca">
                               Marca
                             </label>
-                            <input id="inputMarca" type="text" placeholder="Marca" className="block rounded-md border-0 py-1.5 pl-4 pr-4 text-gray-900 ring-1 ring-inset ring-gray-500 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 w-full"/>
+                            <input id="inputMarca" type="text" readOnly value={modalState.informacoes.marca} className="block rounded-md border-0 py-1.5 pl-4 pr-4 text-gray-900 ring-1 ring-inset ring-gray-500 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 w-full"/>
                           </div>    
                           
                           <div className="grow min-w-[200px] max-w-[300px]">
                             <label className="text-sm text-gray-500 w-full pl-1" htmlFor="inputModelo">
                               Modelo
                             </label>
-                            <input id="inputModelo" type="text" placeholder="Modelo" className="block rounded-md border-0 py-1.5 pl-4 pr-4 text-gray-900 ring-1 ring-inset ring-gray-500 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 w-full"/>
+                            <input id="inputModelo" type="text" readOnly value={modalState.informacoes.modelo} className="block rounded-md border-0 py-1.5 pl-4 pr-4 text-gray-900 ring-1 ring-inset ring-gray-500 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 w-full"/>
                           </div>
                           
                           <div className="grow min-w-[100px] max-w-[150px]">
                             <label className="text-sm text-gray-500 w-full pl-1" htmlFor="inputAnoFabricacao">
                               Ano Fabricação
                             </label>
-                            <input id="inputAnoFabricacao" type="text" placeholder="Ano Fabricação" className="block rounded-md border-0 py-1.5 pl-4 pr-4 text-gray-900 ring-1 ring-inset ring-gray-500 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 w-full"/>
+                            <input id="inputAnoFabricacao" type="text" readOnly value={modalState.informacoes.anoFabricacao} className="block rounded-md border-0 py-1.5 pl-4 pr-4 text-gray-900 ring-1 ring-inset ring-gray-500 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 w-full"/>
                           </div> 
                           
                           <div className="grow min-w-[100px] max-w-[150px]">
                             <label className="text-sm text-gray-500 w-full pl-1" htmlFor="inputAnoModelo">
                               Ano Modelo
                             </label>
-                            <input id="inputAnoModelo" type="text" placeholder="Ano Modelo" className="block rounded-md border-0 py-1.5 pl-4 pr-4 text-gray-900 ring-1 ring-inset ring-gray-500 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 w-full"/>
+                            <input id="inputAnoModelo" type="text" readOnly value={modalState.informacoes.anoModelo} className="block rounded-md border-0 py-1.5 pl-4 pr-4 text-gray-900 ring-1 ring-inset ring-gray-500 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 w-full"/>
                           </div>
                           
                           <div className="grow min-w-[150px] max-w-[200px]">
@@ -180,14 +181,14 @@ export default function NewVehivleModal(): JSX.Element {
                 <div className="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
                   <AppButton
                     className="inline-flex w-full justify-center rounded-md bg-sky-700 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-sky-600  sm:ml-3 sm:w-auto"
-                    onClick={() => dispatch(vehicleModalStateReducers.toggle())}
+                    onClick={() => dispatch(editVehicleModalStateReducers.toggle(""))}
                   >
                     Cadastrar
                   </AppButton>
                   <button
                     type="button"
                     className="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto"
-                    onClick={() => dispatch(vehicleModalStateReducers.toggle())}
+                    onClick={() => dispatch(editVehicleModalStateReducers.toggle(""))}
                   >
                     Cancelar
                   </button>
